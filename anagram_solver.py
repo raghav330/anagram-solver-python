@@ -31,7 +31,7 @@ def return_anagrams(letters: str) -> list:
                 if v <= letters_count[k]:
                     check_word.add(k)
             # Check if check_words is exactly equal to the unique letters
-            # in the word in the dictionary
+            # in the word of dictionary
             if check_word == set(word):
                 anagrams.add(word)
 
