@@ -25,8 +25,8 @@ def return_anagrams(letters: str) -> list:
             for w in set(word):
                 if Counter(word)[w] <= Counter(letters)[w]:
                     check_word.add(w)
-                if check_word == set(word):
-                    anagrams.add(word)
+            if check_word == set(word):
+                anagrams.add(word)
 
     return sorted(list(anagrams), key=lambda x: len(x))
 
