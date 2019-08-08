@@ -17,14 +17,21 @@ def return_anagrams(letters: str) -> list:
 
     letters = letters.lower()
 
+    letters_count = Counter(letters)
+
     anagrams = set()
     for word in dictionary:
-        # if letters in word are in the scrambled letters
+        # Check if all the unique letters in word are in the
+        # scrambled letters
         if not set(word) - set(letters):
             check_word = set()
-            for w in set(word):
-                if Counter(word)[w] <= Counter(letters)[w]:
-                    check_word.add(w)
+            # Check if the count of each letter is less than or equal
+            # to the count of that letter in scrambled letter input
+            for k, v in Counter(word).items():
+                if v <= letters_count[k]:
+                    check_word.add(k)
+            # Check if check_words is exactly equal to the unique letters
+            # in the word in the dictionary
             if check_word == set(word):
                 anagrams.add(word)
 
