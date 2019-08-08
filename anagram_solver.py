@@ -31,7 +31,6 @@ def return_anagrams(letters: str) -> list:
     return sorted(list(anagrams), key=lambda x: len(x))
 
 
-8826138623
 if __name__ == '__main__':
     start = time.time()
     test_anagrams = return_anagrams(sys.argv[1])
