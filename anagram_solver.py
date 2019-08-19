@@ -35,7 +35,7 @@ def return_anagrams(letters: str) -> list:
             if check_word == set(word):
                 anagrams.add(word)
 
-    anagrams.remove('')
+    # anagrams.remove('')
 
     return sorted(list(anagrams), key=lambda x: len(x))
 
@@ -43,7 +43,8 @@ def return_anagrams(letters: str) -> list:
 if __name__ == '__main__':
     start = time.time()
     test_anagrams = return_anagrams(sys.argv[1])
-    print(test_anagrams)
     stop = time.time()
-    print(f"Number of anagrams: {len(test_anagrams)}")
+
+    print(test_anagrams)
+    print(f"Number of anagrams: {len(test_anagrams) - (len(sys.argv[1]) + 1)}")
     print(f"Time Taken: {round(stop - start, 2)} seconds")
