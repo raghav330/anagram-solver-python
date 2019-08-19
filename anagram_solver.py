@@ -9,6 +9,19 @@ dictionary = [x.lower() for x in dictionary.split('\n')]
 
 
 def return_anagrams(letters: str) -> list:
+    """
+    This returns all length anagrams from the input string.
+
+    :param: a string of alphabets
+    :return: a list of anagrams
+
+    :example:
+    $ python3 anagram_solver.py dive
+    >> ['de', 'ed', 'id', 'di', 'ie', 'vei', 'div', 'vie', 'die', 'dev', 'ide',
+        'dive']
+        Number of anagrams: 12
+        Time Taken: 0.32 seconds
+    """
 
     global dictionary
 
@@ -35,9 +48,13 @@ def return_anagrams(letters: str) -> list:
             if check_word == set(word):
                 anagrams.add(word)
 
-    # anagrams.remove('')
+    # Sort the anagrams by length
+    anagrams = sorted(list(anagrams), key=lambda x: len(x))
 
-    return sorted(list(anagrams), key=lambda x: len(x))
+    # Remove the empty string and one length alphabets
+    anagrams = anagrams[1 + len(letters):]
+
+    return anagrams
 
 
 if __name__ == '__main__':
@@ -46,5 +63,5 @@ if __name__ == '__main__':
     stop = time.time()
 
     print(test_anagrams)
-    print(f"Number of anagrams: {len(test_anagrams) - (len(sys.argv[1]) + 1)}")
+    print(f"Number of anagrams: {len(test_anagrams)}")
     print(f"Time Taken: {round(stop - start, 2)} seconds")
